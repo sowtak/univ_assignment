@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>sample</title>
+  <style>
+
+  </style>
+  <script>
+    function showClock() {
+      let nowTime = new Date();
+      let nowHour = nowTime.getHours();
+      let nowMin  = nowTime.getMinutes();
+      let nowSec  = nowTime.getSeconds();
+      let msg = "現在時刻：" + nowHour + ":" + nowMin + ":" + nowSec;
+      document.getElementById("realtime").innerHTML = msg;
+    }
+    setInterval('showClock()',1000000000000);
+  </script>
+</head>
+
+<body>
+
+  <p id="realtime"></p>
+
+</body>
+
+</html>
+

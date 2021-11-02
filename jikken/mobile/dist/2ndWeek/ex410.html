@@ -1,0 +1,113 @@
+<!-- 省略しない記法で書かれたプログラムを省略記法に書き直す課題 -->
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ex410: ajaxの実験</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      //大域変数の定義：左の状態 (false, true)と右の状態 (false, true)
+      var left_state  = false;
+      var right_state = false;
+
+      //readyメソッド
+      jQuery(document).ready(init);
+
+      //readyメソッドから呼び出される関数の定義
+      function init(){
+
+        //ボタン1が押されたら、left_functionを呼び出す
+        jQuery('#button1').click(left_function);
+
+        //ボタン2が押されたら、right_functionを呼び出す
+        jQuery('#button2').click(right_function);
+      }
+
+      //ボタン1が押されたら呼び出される関数の定義
+      function left_function() {
+
+        //left_stateがfalseならAjaxでダウンロードを試みる
+        if (left_state == false) {
+
+          //１．ajax()メソッドの第１引数はダウンロードするURL
+          //２．ajax()以降は、メソッドチェーン記法で続けて別のメソッドを与える
+          //３．done()メソッドは、ダウンロードに成功したときに呼び出す関数の規定
+          //４．fail()メソッドは、ダウンロードに失敗したときに呼び出す関数の規定
+          jQuery.ajax('ex410-load.txt').done(left_on).fail(left_error);
+
+          //状態の変更
+          left_state = true;
+        } else {
+          //停止状態に移行
+
+          //text()メソッドは、DOMノードのテキストを変更する
+          jQuery('#status-area1').text('');
+          jQuery('#display-area1').text('');
+          left_state = false;
+        }
+      }
+
+      //ボタン2が押されたら呼び出す関数の定義(left_functionと同様の内容)
+      function right_function() {
+        if (right_state == false) {
+          jQuery.ajax('ex410-load.html').done(right_on).fail(right_error);
+          right_state = true;
+        } else {
+          jQuery('#status-area2').text('');
+
+          //html()メソッドは、DOMノードのテキストを変更する
+          jQuery('#display-area2').html('');
+          right_state = false;
+        }
+      }
+
+      //左画面がオン状態になり、Ajaxダウンロードが成功したときに呼び出される関数
+      function left_on(data) {
+        jQuery('#status-area1').text('読み込み成功');
+        jQuery('#display-area1').text(data);
+      }
+
+      //左画面がオン状態になり、Ajaxダウンロードが失敗したときに呼び出される関数
+      function left_error(data) {
+        jQuery('#status-area1').text('読み込み失敗');
+      }
+
+      //右画面がオン状態になり、Ajaxダウンロードが成功したときに呼び出される関数
+      function right_on(data) {
+        jQuery('#status-area2').text('読み込み成功');
+        jQuery('#display-area2').html(data);
+      }
+
+      //右画面がオン状態になり、Ajaxダウンロードが失敗したときに呼び出される関数
+      function right_error() {
+        jQuery('#status-area2').text('読み込み失敗');
+      }
+    </script>
+  </head>
+
+  <body bgcolor="#FFFFFF">
+    <table>
+      <tr>
+        <td>
+          <div style='clear:both;border: 2px dotted #080;margin:10px; padding:10px;'>
+            <p>
+              <button id='button1'>Ajax で取得したテキストファイルを表示</button>
+            </p>
+            <span id='status-area1'></span><br>
+            <div id='display-area1' style='border:1px solid #00f;padding:10px;font-size:20px;font-weight:bold; height: 100px'></div>
+          </div>
+        </td>
+        <td>
+          <div style='clear:both;border: 2px dotted #080;margin:10px; padding:10px;'>
+            <p>
+              <button id='button2'>Ajax で取得した HTML を表示</button>
+            </p>
+            <span id='status-area2'></span><br>
+            <div id='display-area2' style='border:1px solid #00f;padding:10px;font-size:20px;font-weight:bold; height: 100px'></div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

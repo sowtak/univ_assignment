@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ex520: クリックで左右に遷移する(PC向け)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 2016年11月12日現在のjQuery Mobileの最新安定板は1.4.5 -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
+
+    <!-- jQuery 最新版を導入 -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- 2016年11月12日現在のjQuery Mobileの最新安定板は1.4.5 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+  </head>
+
+  <body>
+    <!-- ページ1 -->
+    <div data-role="page" id="page1" data-theme="a">
+      <div data-role="header">
+        <!-- ナビゲーションバー(左右ページへのリンク) -->
+        <div data-role="navbar" class="navbar">
+          <ul>
+            <li>
+              <a href="#page2" data-icon="arrow-r"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div data-role="content" id="page1swipe" style="min-height:500px;">
+        <p>ここはページ1です。</p>
+        <p>＞ボタンをクリックするとページ2に移動します。</p>
+      </div>
+    </div>
+
+    <!-- ページ2 -->
+    <div data-role="page" id="page2" data-theme="a">
+      <div data-role="header">
+        <!-- ナビゲーションバー(左右ページへのリンク) -->
+        <div data-role="navbar" class="navbar">
+          <ul>
+            <li>
+              <a href="#page1" data-icon="arrow-l"></a>
+            </li>
+            <li>
+              <a href="#page3" data-icon="arrow-r"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div data-role="content" id="page2swipe" style="min-height:500px;">
+        <p>ここはページ2です。</p>
+        <p>＞ボタンをクリックするとページ3に移動します。</p>
+        <p>＜ボタンをクリックするとページ1に移動します。</p>
+      </div>
+    </div>
+
+    <!-- ページ3 -->
+    <div data-role="page" id="page3" data-theme="a">
+      <div data-role="header">
+        <!-- ナビゲーションバー(左右ページへのリンク) -->
+        <div data-role="navbar" class="navbar">
+          <ul>
+            <li>
+              <a href="#page2" data-icon="arrow-l"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div data-role="content" id="page3swipe" style="min-height:500px;">
+        <p>ここはページ3です。</p>
+        <p>＜ボタンをクリックするとページ2に移動します。</p>
+      </div>
+    </div>
+    <!-- data-role="page" -->
+  </body>
+</html>

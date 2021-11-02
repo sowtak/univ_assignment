@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ex220-sample: テキスト行を追加する</title>
+    <script>
+      //テキストを追加する関数
+      function addText(event){
+        //DOMノードの作成
+        var node = document.createElement('p');
+
+        //DOMノード内部のHTML記述を変更
+        node.innerHTML = 'テキストが追加されました';
+
+        // DOM の document ノード配下の body ノードに子ノードを追加する
+        document.body.appendChild(node);
+      }
+      // windowの読み込み完了イベント監視
+      window.addEventListener("load", function(event){
+        var button = document.getElementById("change-text");
+
+        //クリックイベントを監視
+        button.addEventListener("click", addText, false);
+      }, false);
+    </script>
+  </head> 
+  <body>
+    <div id="box">
+      <button id="change-text">テキストを追加する</button>
+    </div>
+  </body>
+</html>

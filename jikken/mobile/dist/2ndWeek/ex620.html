@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ex620: DOM based XSSによる情報の窃取の実験</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <h1>教科：<span id="subject"></span></h1><br>
+    <table border=1>
+      <tr>
+        <td>学籍番号</td>
+        <td>氏名</td>
+        <td>点数</td>
+      </tr>
+      <tr>
+        <td>0001</td>
+        <td>北大太郎</td>
+        <td>60</td>
+      </tr>
+      <tr>
+        <td>0002</td>
+        <td>北大二郎</td>
+        <td>90</td>
+      </tr>
+      <tr>
+        <td>0003</td>
+        <td>北大花子</td>
+        <td>80</td>
+      </tr>
+    </table>
+
+    <script>
+      var span=document.getElementById("subject");
+      span.innerHTML = location.hash.substring(1);
+    </script>
+  </body>
+</html>

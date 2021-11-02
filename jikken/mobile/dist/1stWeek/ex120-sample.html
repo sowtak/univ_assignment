@@ -1,0 +1,28 @@
+﻿<!-- 2×2の表を生成し、表示するプログラム -->
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ex120-sample: 2×2の表</title>
+  </head>
+  <body>
+     <script>
+       // 各セルに表示する文字列を変数に代入
+       var cell1 = "左上";
+       var cell2 = "右上";
+       var cell3 = "左下";
+       var cell4 = "右下";
+       // 表の出力
+       document.write("<table>");  // 表の開始
+         document.write("<tr>");  // 1行目の開始
+           document.write("<td>", cell1, "</td>");  // 1行目1列目（左上）のセルを出力
+           document.write("<td>", cell2, "</td>");  // 1行目2列目（右上）のセルを出力
+         document.write("</tr>");  //1行目の終了
+         document.write("<tr>");  // 2行目の開始
+           document.write("<td>", cell3, "</td>");  // 2行目1列目（左下）のセルを出力
+           document.write("<td>", cell4, "</td>");  // 2行目2列目（右下）のセルを出力
+         document.write("</tr>");  // 2行目の終了
+       document.write("</table>");  // 表の終了
+     </script>
+	</body>
+</html>

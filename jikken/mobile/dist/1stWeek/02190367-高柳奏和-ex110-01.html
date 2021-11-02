@@ -1,0 +1,34 @@
+﻿<!-- 10個の10進数をそれぞれ16進数に変換し表示するプログラム -->
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ex110: 16進数への変換</title>
+  </head>
+  <body>
+     <script>
+       function to_hex(decimal) {
+       //ここに10進数を16進数に変換する関数の中身を書くこと。
+         if (decimal>=0 && decimal<=255) return decimal.toString(16)
+        else return 0 
+       }
+
+       //decimalsは10進数を10個格納する配列
+       var decimals = new Array(10);
+       decimals[0] = -10;
+       decimals[1] = 0;
+       decimals[2] = 10;
+       decimals[3] = 15;
+       decimals[4] = 16;
+       decimals[5] = 100;
+       decimals[6] = 200;
+       decimals[7] = 255;
+       decimals[8] = 256;
+       decimals[9] = 1000;
+
+       //10進数(0) = 0x00 のように与えられた10進数を16進数に変換して表示する
+       for (var i = 0; i < 10; i++)
+          document.write("10進数(" + decimals[i] + ") = 0x" + to_hex(decimals[i]) + "<br>");
+     </script>
+  </body>
+</head>

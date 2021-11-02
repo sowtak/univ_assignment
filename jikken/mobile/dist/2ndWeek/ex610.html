@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ex610: DOM based XSSの実験</title>
+  </head>
+  <body>
+    Hi <span id="name"></span>,<br>
+    welcome to this website.
+    <script>
+
+      //IDがnameというDOMノードを選択
+      var span=document.getElementById("name");
+
+      //URLフラグメントをspanに転記
+      span.innerHTML = location.hash.substring(1);
+      //substring(1)とすることで、#記号を捨てることができる。
+    </script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>ex510: jQuery Mobileのフォームページのサンプル</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <!-- 2020年11月18日現在のjQuery Mobileの最新安定板は1.4.5 -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
+
+    <!-- jQuery 最新版を導入 -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- 2020年11月18日現在のjQuery Mobileの最新安定板は1.4.5 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+  </head>
+  <body>
+    <div data-role="page">
+      <div data-role="header">
+        <h1>フォーム</h1>
+      </div>
+      <div data-role="content">
+        <form id="inquiry_form" method="post">
+          <div data-role="fieldcontain">
+            <label for="name">テキストエリア</label>
+            <input type="text" name="name" id="name" value="" />
+            <fieldset>
+          </div>
+          <div data-role="fieldcontain">
+            <fieldtest data-role="controlgroup">
+              <legend>ラジオボタン</legend>
+              <input type="radio" name="radio-choice" id="radio-choice-1" value="choise-1" />
+              <label for="radio-choice-1">選択項目1</label>
+              <input type="radio" name="radio-choice" id="radio-choice-2" value="choise-2" />
+              <label for="radio-choice-2">選択項目2</label>
+            </fieldset>
+          </div>
+          <div data-role="fieldcontain">
+            <label for="kind">お問合せ種別</label>
+            <select name="kind" id="kind">
+              <option>選択してください</option>
+              <option value="選択項目1">選択項目1</option>
+              <option value="選択項目2">選択項目2</option>
+              <option value="選択項目3">選択項目3</option>
+              <option value="選択項目4">選択項目4</option>
+            </select>
+          </div>
+          <div data-role="fieldcontain">
+            <label for="inquiery">テキストボックス</label>
+            <textarea name="inquiery" id="inquirery"></textarea>
+          </div>
+          <div data-role="filedcontain">
+            <label for="search-basic">検索</label>
+            <input type="search" name="search" id="search" value="" />
+          </div>
+          <div data-role="fieldcontain">
+            <label for="slider-1">スライダー</label>
+            <input type="range" name="slider-1" id="slider-1" value="60" min="0" max="100" />
+          </div>
+          <div data-role="fieldcontain">
+            <label for="flip-1">フリップスイッチ</label>
+            <select name="flip-1" id="flip-1" data-role="slider">
+              <option value="off">Off</option>
+              <option value="on">On</option>
+            </select>
+          </div>
+          <input type="submit" id="submit" data-thema="b" value="送信">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

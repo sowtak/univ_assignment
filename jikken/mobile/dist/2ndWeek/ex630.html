@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ex630: DOM based XSSによる情報の窃取の実験(安全版)</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <h1>教科：<span id="subject"></span></h1><br>
+    <table border=1>
+      <tr>
+        <td>学籍番号</td>
+        <td>氏名</td>
+        <td>点数</td>
+      </tr>
+      <tr>
+        <td>0001</td>
+        <td>北大太郎</td>
+        <td>60</td>
+      </tr>
+      <tr>
+        <td>0002</td>
+        <td>北大二郎</td>
+        <td>90</td>
+      </tr>
+      <tr>
+        <td>0003</td>
+        <td>北大花子</td>
+        <td>80</td>
+      </tr>
+    </table>
+
+    <script>
+      var span=document.getElementById("subject");
+      //対策２を有効にしたもの
+      //span.innerHTML   = escapeHTML(location.hash.substring(1));
+
+      //対策３を有効にしたもの
+      //span.textContent = location.hash.substring(1);
+
+      //対策２、３を共に有効にしたもの
+      span.textContent = escapeHTML(location.hash.substring(1));
+
+      //特殊記号をただの文字に変換（サニタイジング処理）する関数
+      function escapeHTML(str) {
+       str = str + "";
+       var out = "";
+       for(var i=0; i<str.length; i++) {
+         if(str[i] === '<') {
+           out += '&lt;';
+         } else if(str[i] === '>') {
+           out += '&gt;';
+         } else if(str[i] === "'") {
+           out += '&#39;'; 
+         } else if(str[i] === '"') {
+           out += '&quot;';                        
+         } else {
+           out += str[i];
+         }
+       }
+       return out;                    
+      }
+    </script>
+  </body>
+</html>

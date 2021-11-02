@@ -1,0 +1,67 @@
+﻿<!-- 16進数(1~F)の掛け算表を表示するプログラム -->
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ex120: 16進数の掛け算表</title>
+  </head>
+  <style>
+    table, tr, td {
+      border: 1px solid black;
+  <body>
+     <script>
+       //ここに課題1-1で作成した10進数→16進数に変換する関数を定義すること。
+       function to_hex(decimal) {
+         if (decimal>=0 && decimal<=255) return decimal.toString(16);
+         else return 0;
+       }
+
+       var n = 16;	   //二次元配列の行、列の要素数(16×16の配列を作る)
+       var tableData;  //掛け算表のデータを格納するn×nの二次元配列データ
+
+
+       //掛け算表のデータを格納するn×nの二次元配列を作成するコードをここに書くこと。
+      
+
+       //以下の手順で二次元配列tableData[n][n]を作成できる
+       //１．要素数nの配列tableData[n]をまず作成
+       //２．列の各番地tableData[i]に要素数nの配列を格納
+        
+        var i,j;
+        var tableData = new Array(n);
+        for(i = 0; i < n; i++) {
+          tableData[i] = new Array(n);
+        }
+
+       //掛け算表用のデータを二次元配列に格納するコードをここに書くこと(for文を用いること)。
+       //表の左上部分(0行0列目)には区切りを表す"＼"を格納すること
+       //表の上段部分(0行1~15列目)に1~15の16進数文字列を格納すること
+       //表の左端部分(1~15行0列目)に1~15の16進数文字列を格納すること
+       //残りのi行j列目には掛け算(i*j)の結果の16進数文字列を格納すること
+        
+        for(var i=0;i<n;i++) {
+          for(var j=0;j<n;i++) {
+            if(i==0&&j==0)tableData[i][j]="\\";
+            else if(i==0&&j!=0)tableData[i][j]=j.toString(16).toUpperCase();
+            else if(i!=0&&j==0)tableData[i][j]=i.toString(16).toUpperCase();
+            else tableData[i][j]=(i*j).toString(16);
+          }
+        }
+        
+        
+
+       //表の出力
+       document.write("<table border="1" cellpadding="3">");  //表の定義を開始、以降のコードで表の中身を定義していく
+        document.write("<tbody>")
+       for(var i=0; i<n; i++){
+         document.write("<tr>");  //表の横一行部分の定義を開始
+         for(var j=0; j<n; j++){
+            document.write("<td>", tableData[i][j].toString(), "</td>");
+         }
+         document.write("</tr>");  //表の横一行部分の定義を終了
+       }
+        document.write("</tbody>")
+       document.write("</table>"); 　//表の定義を終了
+     </script>
+	</body>
+</html>

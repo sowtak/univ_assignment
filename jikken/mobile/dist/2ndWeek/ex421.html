@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>ex421: 天気情報取得</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./mamewaza/mamewaza_weather.min.js"></script>
+    <script>
+      $(function(){
+        $.mamewaza_weather({
+          selector: "#city",
+          region: "016010",
+          layout: "vertical",
+          when: "7days",
+          cssPath: "./mamewaza/mamewaza_weather.css"
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      札幌地方の天気予報
+      <p id="city"></p>
+    </div>
+  </body>
+</html>

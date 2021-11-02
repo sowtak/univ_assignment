@@ -13,7 +13,8 @@ srv.mount_proc('/write') do |req, res|
   idx=idx.to_i+1
   puts idx
   res.status=200
-  res['Content-Type']='text/html'
+  puts "Success"
+  res['Content-Type']='text/plain'
 end
 
 srv.mount_proc('/index') do |req, res|
@@ -21,13 +22,13 @@ srv.mount_proc('/index') do |req, res|
     puts "id: #{k.to_i}"
   end
   res.status=200
-  res['Content-Type']='text/html'
+  res['Content-Type']='text/plain'
 end
 
 srv.mount_proc('/read') do |req, res|
   puts messages[req.query['id'].to_s]
   res.status = 200
-  res['Content-Type']='text/html'
+  res['Content-Type']='text/plain'
 
 end
 

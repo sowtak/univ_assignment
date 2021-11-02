@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ex220: テキストの行を追加・削除する</title>
+    <script>
+      //現在の行数を表す変数、初期値は0
+      var i = 0;
+
+      //削除するために保存しておくDOMノードを表す配列。
+      var nodeArray = new Array(100);
+
+
+      //テキスト行を追加する関数
+      function addText(event){
+        //この関数の中身を記述すること。
+        //ヒント１：テキスト行のDOMノード作成にはdocument.createElement('p')
+        //を利用すること。
+	//ヒント２：作成したDOMノードのinnerHTMLに文字列を代入することで実際の
+        //文字列の追加・修正が可能。
+        //ヒント３：DOMノードはdocument.body.appendChild()関数を使うことで追加可能
+
+        //ヒント４：作成したDOMノードは配列 nodeArray に保存しておくこと。
+
+      }
+
+      //テキスト行を削除する関数
+      function removeText(event){
+        //この関数の中身を記述すること。
+        //ヒント１：削除するDOMノードは配列 nodeArray に保存されている
+        //ヒント２：document.body.removeChild()関数を使うことでDOMノードを削除可能
+
+
+      }
+
+      // windowの読み込み完了イベント監視
+      window.addEventListener("load", function(event){
+        //ボタンを表すDOMノードの取得
+        var addButton    = document.getElementById("add-text");
+        var removeButton = document.getElementById("remove-text");
+
+        //クリックイベントを監視
+        addButton.   addEventListener("click", addText,    false);
+        removeButton.addEventListener("click", removeText, false);
+      }, false);
+    </script>
+  </head> 
+  <body>
+    <div id="box">
+      <button id="add-text">行の追加</button>
+      <button id="remove-text">行の削除</button>
+    </div>
+  </body>
+</html>

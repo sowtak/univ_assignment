@@ -15,26 +15,41 @@
 
       // max_colors は変化させる色の数
       // サンプルでは3色にしているが、実際には10色で作成すること。
-      var max_colors = 3;
+      var max_colors = 10;
 
       // colors は色コードを格納する配列。
       var colors = new Array(max_colors);
       colors[0] = "#ffffff"; // colors[0]は必ず白とすること
       colors[1] = "#ffff00"; // 黄色
       colors[2] = "#0000ff"; // 青色
-
+      colors[3] = "#ff00ff";
+      colors[4] = "#00ff00";
+      colors[5] = "#0ff0ff";
+      colors[6] = "#f0f0f0";
+      colors[7] = "#f00ff0";
+      colors[8] = "#000000";
+      colors[9] = "#f0f0ff";
       //背景色を一つ前方の色に変更する関数
       function changeBgForward() {
         //ここに関数の中身を書くこと。
         // document.body.style.backgroundColorに色コードを代入すると色を変更できる
-
+        if(color_id<max_colors) {
+          color_id=color_id+1;
+          document.body.style.backgroundColor(colors[color_id]);
+        } else document.body.style.backgroundColor(colors[max_colors-1]);
       }
 
       //背景色を一つ後方の色に変更する関数
-      function changeBgBackward() {
+      function changeBgBackward(e) {
         //ここに関数の中身を書くこと。
-
+        
+        if(color_id>0) {
+          color_id=color_id-1;
+          document.body.style.backgroundColor(colors[color_id]);
+        } else document.body.style.backgroundColor(colors[0]);
       }
+      buttonForward.addEventListener("click", changeBgForward, false);
+      buttonBackward.addEventListener("click", changeBgBackward, false);
     </script>
   </head>
   <body>

@@ -1,0 +1,40 @@
+<body>
+    <div class="container">
+      <h1>九九の表を作る</h1>
+      <table class="border" border="1">
+        <script>
+          //xの行を作る
+          document.write('<tr>');
+  
+          //何も掛け算をしない空白のthを作成
+          document.write('<th></th>');
+  
+          //xの行を記述するため、1から9の数字を繰り返しHTMLに記述する
+          for(var i=1; i <= 9; i++){
+            document.write('<th>'+ i +' x</th>');
+          }
+  
+          //ここでxの行を閉じる
+          document.write('</tr>');
+  
+          //ここまでxの行
+  
+          //jの列を作る
+          document.write('<tr>');
+  
+          //jの列を記述するため、1から9の数字を繰り返しHTMLに記述する
+          for(var j=1; j <= 9; j++){
+            document.write('<th>' + j + 'y</th>');
+  
+          //j*kを繰り返すことで、計算結果をtdタグの中に表示する
+            for(var k=1; k <=9; k++){
+              document.write('<td>'+ j*k +'</td>');
+            }
+          //ここでjの行を閉じる
+            document.write('</tr>');
+          }
+        </script>
+      </table>
+    </div>
+    </body>
+  

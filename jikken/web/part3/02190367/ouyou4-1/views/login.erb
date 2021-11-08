@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+      <meta charset="utf-8">
+     <title><%= @title %></title>
+  </head>
+  <body>
+     <h1>ユーザ: <%= @username %></h1>
+     <table border>
+       <tr>
+         <th>日時</th>
+         <th>投稿者名</th>
+         <th>メッセージ</th>
+       </tr>
+       <% @message.each do |msg| %>
+       <tr>
+         <td><%= msg.date %></td>
+         <td><%= msg.name %></td>
+         <td><%= msg.message %></td>
+       </tr>
+       <% end %>
+     </table>
+     <h2>入力フォーム</h2>
+     <table>
+        <tr>
+          <td>メッセージ</td>
+          <td>投稿者名</td>
+        </tr>
+        <form method="post" action="msg">
+          <tr>
+            <td><input type="text" name="message"></td>
+            <td><input type="text" name="name"><%= @username %></td>
+            <td><input type="submit" value="投稿"></td>
+          </tr>
+        </form>
+     </table>
+   </body>
+</html>

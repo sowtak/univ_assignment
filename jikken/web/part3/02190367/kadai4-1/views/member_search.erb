@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>member_search 検索結果</title>
+</head>
+<body>
+<h1>member_search 検索結果<h1>
+<table border="1">
+<tr>
+<th>名前</th>
+</tr>
+<%= @lab_members.each do |m|%>
+<tr>
+<td><%= m.name%></td>
+</tr>
+<% end %>
+</table>
+</body>
+</html>

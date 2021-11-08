@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ex210: 背景色を書き換える</title>
+    <style>
+      body {
+        background-color: #ffffff;
+      }
+    </style>
+    <script type="text/javascript">
+      var color_id = 0; // 0は初期色の白を示している
+      var max_colors = 10;
+      
+      var colors = new Array(max_colors);
+      colors[0] = "#ffffff"; // colors[0]は必ず白とすること
+      colors[1] = "#ffff00"; // 黄色
+      colors[2] = "#0000ff"; // 青色
+      colors[3] = "#ff00ff"; // pink
+      colors[4] = "#00ff00"; // lightgreen
+      colors[5] = "#0ff0ff"; // lightblue
+      colors[6] = "#f0f0f0"; // pink
+      colors[7] = "#fedacb"; // brown
+      colors[8] = "#aaff00"; // yellow
+      colors[9] = "#000000"; // black
+      function changeBgForward() {
+      // var node = document.createElement('p');
+      // node.innerHTML = color_id.toString();
+      // document.body.appendChild(node);
+        if(color_id<max_colors-1) {
+          color_id=color_id+1;
+          document.body.style.background = colors[color_id];
+        } else document.body.style.background = colors[max_colors-1];
+      }
+
+      function changeBgBackward() {
+        if(color_id>0) {
+          color_id=color_id-1;
+          document.body.style.background = colors[color_id];
+        } else document.body.style.background = colors[0];
+      }
+
+    </script>
+  </head>
+  <body>
+    <div id="main_content">
+       <button id="forward" onclick="changeBgForward()">背景色を変更する（前方）</button>
+       <button id="backward" onclick="changeBgBackward()">背景色を変更する（後方）</button>
+    </div>
+  </body>
+</html>

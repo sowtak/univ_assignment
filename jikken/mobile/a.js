@@ -1,33 +1,35 @@
-function to_hex(decimal) {
-    if (decimal>=0 && decimal<=255) return decimal.toString(16);
-    else return 0;
-  }
+var color_id = 0; // 0は初期色の白を示している
+var max_colors = 10;
 
-  var n = 16;	   //二次元配列の行、列の要素数(16×16の配列を作る)
-   var tableData = new Array(n);
-   for(i = 0; i < n; i++) {
-     tableData[i] = new Array(n);
-   }
+var colors = new Array(max_colors);
+colors[0] = "#ffffff"; // colors[0]は必ず白とすること
+colors[1] = "#ffff00"; // 黄色
+colors[2] = "#0000ff"; // 青色
+colors[3] = "#ff00ff"; // pink
+colors[4] = "#00ff00"; // lightgreen
+colors[5] = "#0ff0ff"; // lightblue
+colors[6] = "#f0f0f0"; // pink
+colors[7] = "#fedacb"; // brown
+colors[8] = "#aaff00"; // yellow
+colors[9] = "#f0f0ff"; // baige
+function changeBgForward() {
+  if(color_id<max_colors) {
+    color_id=color_id+1;
+    document.body.style.backgroundColor(colors[color_id]);
+  } else document.body.style.backgroundColor(colors[max_colors-1]);
+}
 
-   for(var i=0;i<n;i++) {
-     for(var j=0;j<n;i++) {
-       if(i==0&&j==0)tableData[i][j]="\\";
-       else if(i==0&&j!=0)tableData[i][j]=to_hex(j);
-       else if(i!=0&&j==0)tableData[i][j]=to_hex(i);
-       else tableData[i][j]=to_hex(i*j);
-     }
-   }
-   
+function changeBgBackward() {
+  if(color_id>0) {
+    color_id=color_id-1;
+    document.body.style.backgroundColor(colors[color_id]);
+  } else document.body.style.backgroundColor(colors[0]);
+}
 
-  document.write("<table class='border' border='1' cellpadding='3'>");  //表の定義を開始、以降のコードで表の中身を定義していく
-  for(var i=0; i<n; i++){
-    document.write("<tr>");  //表の横一行部分の定義を開始
-    for(var j=0; j<n; j++) {
-      if(i==0&&j==0)document.write('<th>',tableData[0][0] ,'</th>');
-      else if(i==0&&j!=0)document.write('<th>',tableData[i][j],'</th>');
-      else if(i!=0&&j==0)document.write('<th>',tableData[i][j],'</th>');
-      else document.write("<td>",tableData[i][j],"</td>");
-     }
-    document.write("</tr>");  //表の横一行部分の定義を終了
-  }
-  document.write("</table>"); 　//表の定義を終了
+window.addEventListener("load",  function(e) {
+  var forward = document.getElementById("forward");
+  var backward = document.getElementById("backward");
+
+  forward.addEventListener("click", changeBgForward, false);
+  backward.addEventListener("click", changeBgBackward, false);
+}, false);

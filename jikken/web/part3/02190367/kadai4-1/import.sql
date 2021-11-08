@@ -1,16 +1,16 @@
-CREATE TABLE student_records(
+CREATE TABLE lab_members(
   id integer PRIMARY KEY,
-  student_id integer,
-  klass text,
-  score integer,
-  grade text);
+  lab_id integer,
+  member_name text,
+  position text
+);
 
-CREATE TABLE students(
-  student_id integer PRIMARY KEY,
-  name text
+CREATE TABLE labs(
+  id integer PRIMARY KEY,
+  lab_name text
 );
 
 .separator , 
 
-.import student_records.csv student_records
-.import students.csv students
+.import lab_members.csv lab_members
+.import labs.csv labs

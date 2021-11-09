@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <title>ex510: jQuery Mobileのフォームページのサンプル</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <!-- 2020年11月18日現在のjQuery Mobileの最新安定板は1.4.5 -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
+
+    <!-- jQuery 最新版を導入 -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- 2020年11月18日現在のjQuery Mobileの最新安定板は1.4.5 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+  </head>
+  <body>
+    <div data-role="page">
+      <div data-role="header">
+        <h1>ワクチン接種後アンケート</h1>
+      </div>
+      <div data-role="content">
+        <form id="inquiry_form" method="post">
+          <div data-role="fieldcontain">
+            <fieldtest data-role="controlgroup">
+              <input type="radio" name="radio-choice" id="radio-choice-1" value="choise-1" />
+              <label for="radio-choice-1">1回目</label>
+              <input type="radio" name="radio-choice" id="radio-choice-2" value="choise-2" />
+              <label for="radio-choice-2">2回目</label>
+            </fieldset>
+          </div>
+          <br>
+          <br>
+          <div data-role="fieldcontain">
+            <label for="inquiery">副反応があった方は記入をお願いします</label>
+            <br>
+            <textarea name="inquiery" id="inquirery"></textarea>
+          </div>
+          <br>
+          <input type="submit" id="submit" data-thema="b" value="送信">
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

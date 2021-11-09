@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ex421: 天気情報取得</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./mamewaza/mamewaza_weather.min.js"></script>
+    <script>
+      jQuery(document).ready(init);
+      function init(){
+        jQuery('#region').change(select_region);
+      }
+      function select_region(){
+        var region = jQuery(this).children('option:selected').val();
+        var city_name = jQuery(this).children('option:selected').text();
+        jQuery("#city").html("");
+        jQuery.mamewaza_weather({
+          selector: '#city',
+          region: region,
+          layout: 'horizontal',
+          when: '7days',
+          explanation: true,
+          cssPath: './mamewaza/mamewaza_weather.css'
+        });
+        jQuery('#city_name').html(city_name);
+      }
+    </script>
+  </head>
+  <body>
+    <select id="region">
+      <option value="">選択してください</option>
+      <option value="360000">徳島県</option>
+      <option value="370000">香川県</option>
+      <option value="380000">愛媛県</option>
+      <option value="390000">高知県</option>
+    </select>
+    <div>
+      四国地方の天気予報
+      <p id="city"></p>
+    </div>
+  </body>
+</html>

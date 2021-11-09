@@ -27,17 +27,23 @@
       // var node = document.createElement('p');
       // node.innerHTML = color_id.toString();
       // document.body.appendChild(node);
-        if(color_id<max_colors-1) {
+        if(color_id==max_colors-1) {
+          color_id=0;
+          document.body.style.background = colors[color_id];
+        } else {
           color_id=color_id+1;
           document.body.style.background = colors[color_id];
-        } else document.body.style.background = colors[max_colors-1];
+        }
       }
 
       function changeBgBackward() {
-        if(color_id>0) {
+        if(color_id==0) {
+          color_id=max_colors-1;
+          document.body.style.background = colors[color_id];
+        } else {
           color_id=color_id-1;
           document.body.style.background = colors[color_id];
-        } else document.body.style.background = colors[0];
+        }
       }
 
     </script>

@@ -1,0 +1,83 @@
+<!-- 省略しない記法で書かれたプログラムを省略記法に書き直す課題 -->
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ex410: ajaxの実験</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      //大域変数の定義：左の状態 (false, true)と右の状態 (false, true)
+      var left_state  = false;
+      var right_state = false;
+
+      $(function(){
+        //ボタン1が押されたら、left_functionを呼び出す
+        $('#button1').click(function(){
+            //left_stateがfalseならAjaxでダウンロードを試みる
+            if (left_state == false) {
+		          $.ajax('ex410-load.txt').done(function(data) {
+                $('#status-area1').text('読み込み成功');
+                $('#display-area1').html(data);
+              }).fail(function() {
+                $('#status-area1').text('読み込み失敗');
+            });
+		    //状態の変更
+		    left_state = true;
+		} else {
+		  //停止状態に移行
+		  //text()メソッドは、DOMノードのテキストを変更する
+		  $('#status-area1').text('');
+		  $('#display-area1').text('');
+		  left_state = false;
+		}
+		} );
+
+        //ボタン2が押されたら、right_functionを呼び出す
+        $('#button2').click(function() {
+            if(right_state == false) {
+                $.ajax('ex410-load.html').done(function(data) {
+                    $('#status-area2').text('読み込み成功');
+                    $('#display-area2').html(data);
+                }).fail(function() {
+                    $('#status-area2').text('読み込み失敗');
+                });
+                right_state = true;
+            } else {
+                $('#status-area2').text('');
+
+                //html()メソッドは、DOMノードのテキストを変更する
+                $('#display-area2').html('');
+                right_state = false;
+            }
+            }
+        );
+      })
+    </script>
+  </head>
+
+  <body bgcolor="#FFFFFF">
+    <table>
+      <tr>
+        <td>
+          <div style='clear:both;border: 2px dotted #080;margin:10px; padding:10px;'>
+            <p>
+              <button id='button1'>Ajax で取得したテキストファイルを表示</button>
+            </p>
+            <span id='status-area1'></span><br>
+            <div id='display-area1' style='border:1px solid #00f;padding:10px;font-size:20px;font-weight:bold; height: 100px'></div>
+          </div>
+        </td>
+        <td>
+          <div style='clear:both;border: 2px dotted #080;margin:10px; padding:10px;'>
+            <p>
+              <button id='button2'>Ajax で取得した HTML を表示</button>
+            </p>
+            <span id='status-area2'></span><br>
+            <div id='display-area2' style='border:1px solid #00f;padding:10px;font-size:20px;font-weight:bold; height: 100px'></div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

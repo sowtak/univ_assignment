@@ -1,0 +1,134 @@
+<!-- jQueryを利用したアニメーションの課題 -->
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>ex430: パラパラアニメーション</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style type="text/css"> /*style内の書式はcss*/
+      /*myImageというID属性が付けられたHTML要素に対してスタイルを指定*/
+      #myImage {
+       	position: absolute;        /*配置する位置を絶対位置で指定
+          (absoluteの場合はブラウザウインドウの左上が基準位置(0,0)となる)*/
+        top: 20px;                 /*ウインドウ左上から20px下に配置*/
+        left: 100px;               /*ウインドウ左上から100px右に配置*/
+        -moz-user-select: none;    /*ダブルクリックやドラッグで選択されない
+                                     ようにする(Firefox版)*/
+        -webkit-user-select: none; /*(Safari, Chrome版)*/
+      }
+    </style>
+
+    <script type="text/javascript">
+      var NumOfImage = 4;             //パラパラアニメーションに用いる画像の総数
+      var INTERVAL = 200;             //パラパラアニメーションの速度
+                                        //(画像が切り替わる時間間隔)
+      var currentImg = 0;             //現在表示している画像の番号
+                                        //(デフォルトでは0番目の画像を表示)
+      var timerId;                    //clearTimeoutで使われる数値のID
+      var isAnimating = false;        //パラパラアニメーションの再生/終了状態を
+                                        //表すフラグ
+      var stopped = false;            //パラパラアニメーションの一時停止状態を
+                                        //表すフラグ
+
+
+      //readyメソッド：この関数はHTML文書の読み込みが完了した後に呼ばれる
+      $(function(){
+        //画像のプリロード：img要素を作成し, images/img[画像の番号].png
+        //の画像ファイルを読み込んでおく
+        for(var i=0; i<NumOfImage; i++)
+          $("<img>").attr("src", "images/img" + i + ".png");
+
+        //最初の画像をdiv要素に追加
+        $("<img id='myImage' width='80' height='120'>")  //ID=myImageとした幅80px,
+                                                         //高さ120pxのimg要素を作成
+
+          .attr("src", "images/img0.png")                //img要素への0番目画像の
+                                                         //割り当て
+
+          .appendTo("#myDiv");                           //ID=myDivであるdiv要素に,
+                                                         //作成したimg要素を追加
+                                                         //(メソッドチェーンを利用)
+
+        //「スタート」ボタンをクリックしたときに呼ばれる関数
+        $("#startBtn").click(function(){
+
+          //パラパラアニメーション中なら終了させる
+          if (isAnimating) {
+            clearTimeout(timerId);
+            isAnimating = false;
+            $("#startBtn").val("スタート");  //ボタンのラベルを変更
+          //そうでなければアニメーション開始
+          }else{
+            isAnimating = true;
+            flipAnimate();
+            $("#startBtn").val("ストップ");  //ボタンのラベルを変更
+          }
+        });
+      });
+
+
+      //Webブラウザ上をダブルクリックしたときに呼ばれる関数
+      $(document).dblclick(function(event){
+
+        //以下の手順1, 2を参考にして, ダブルクリック時にimg要素が直線移動
+        //アニメーションを行うコードをここに書くこと
+
+        //手順1.パラパラアニメーションを一時停止
+        //現在img要素がパラパラアニメーション再生状態にあるかを判定
+        //もし再生中ならば, そのアニメーションを一時停止する
+		  	if(isAnimating) {
+            stopped = true;
+        }
+        //手順2.ID=myImageを持つimg要素に対して直線移動アニメーション効果を適用
+        //アニメーションの内容は, ダブルクリックを行った位置までimg要素(の中心部分)
+        //を直線移動させるものとする
+            $("#myImage").animate({
+                left: event.pageX-$("#myImage").width()/2,
+                top: event.pageY-$("#myImage").height()/2,
+            }, "slow", "swing", flipAnimate());
+        //animateメソッドを用いたアニメーション効果の書式は以下の通り
+        //[ID=myImageを持つimg要素].animate(params, [duration], [easing], [callback])
+        //[]で書かれた引数は省略できる
+        //第１引数：params   … アニメーションで数値を変化させたいプロパティとその値を
+        //  JSON型式
+        //  {[プロパティ] : [変化後の値], [プロパティ] : [変化後の値] ...}で指定する
+        //第２引数：duration … アニメーションの動作時間
+        //第３引数：easing   … 数値が変化する度合
+        //第４引数：callback … アニメーション終了時に呼ばれる関数
+
+        //上記の4パラメータのうち, paramsにはダブルクリックを行った位置までimg要素
+        //(の中心部分)を直線移動させるよう, 適切なプロパティと数値を設定すること
+        //ヒント1：leftプロパティ及びtopプロパティを利用する
+        //ヒント2：ダブルクリックを行った位置はdbclick関数の引数event内に格納されて
+        //おり, その座標(x, y)はevent.pageX, event.pageYで取得できる
+        //ヒント3：img要素の幅と高さはそれぞれ, [ID=myImageを持つimg要素].width(),
+        // [ID=myImageを持つimg要素].height()で取得できる
+        //callback内には手順1の一時停止状態を解除させるコードを書くこと
+      });
+
+      //パラパラマンガのアニメーションを行う関数
+      function flipAnimate() {
+        if(stopped) {
+          return;
+        }
+        isAnimating = true;
+        //表示したい番号の画像をimg要素に設定
+        $("#myImage").attr("src", "images/img" + currentImg + ".png");
+
+        currentImg++;  //次に表示したい画像の番号を設定(ローテーションにする)
+        if(currentImg >= NumOfImage) currentImg = 0;
+
+        //INTERVALで指定したミリ秒後に再びflipAnimate()関数を呼び出す
+      	timerId = setTimeout("flipAnimate()", INTERVAL);
+      }
+    </script>
+  </head> 
+
+  <body> 
+    <form name="form1"><p>
+        <input type="button" id="startBtn" value="スタート">
+    </p></form>
+    <div id="myDiv"></div>
+  </body>
+</html>

@@ -1,14 +1,9 @@
-<!-- 省略記法のサンプル -->
 <!DOCTYPE HTML>
 <html>
-
   <head>
     <meta charset="UTF-8">
     <title>ex401: ブックマーク</title>
-
-    <!-- jQueryライブラリの指定：最新版をダウンロード -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- 初期CSSの定義 -->
     <style type="text/css">
       a{
         font-size: 50px;
@@ -17,32 +12,15 @@
         color: gray;
       }
     </style>
-
-    <!-- JavaScriptのスタート -->
     <script>
-
-      //１．jQuery(document).ready() の省略記法が $()
-      //２．$()の引数は外部関数の名称だが、無名関数で指定することも可能
-      //３．無名関数とは function() {} と引数の場所に、関数の定義そのものを書くこと
       $(function(){
-
-        //１．readyメソッドで呼び出される無名関数の定義
-        //２．jQuery("#myList a")の省略記法が $()
-        //３．hover()メソッドの引数は外部関数が二つ。
-        //４．省略記法では、二つの関数を無名関数で与える
         $("#myList a").hover(
-
-          //hover()メソッドの第１引数
           function() {
-
-            //jQuery(this)の省略記法が$(this)
             $(this).css({
               "color": "red",
               "text-decoration": "underline"
             });
           },
-
-           //hover()メソッドの第２引数
           function () {
             $(this).css({
               "color": "gray",
@@ -50,10 +28,6 @@
             });
           }
         );
-
-        //１．jQuery("#myList a")の省略記法が $("#myList a")
-        //２．click()メソッドの引数は外部関数一つ
-        //３．省略記法では無名関数で記載
         $("#myList a").click(function(){
           msg =  $(this).attr("href");
           var ans = confirm(msg + "に移動してもいいですか？");
@@ -64,7 +38,6 @@
       });	
     </script>
   </head>
-
   <body bgcolor="#FFFFFF">
     <ul id="myList">
       <li><a href="http://www.google.co.jp">Google</a></li>
@@ -73,5 +46,4 @@
       <li><a href="http://www.twitter.com">twitter</a></li>
     </ul>
   </body>
-
 </html>

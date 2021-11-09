@@ -1,13 +1,9 @@
-<!-- 省略しない記法のサンプルプログラム -->
 <!DOCTYPE HTML>
 <html>
   <head>
     <meta charset="UTF-8">
     <title>ex400: ブックマーク</title>
-
-    <!-- jQueryライブラリの指定：最新版をダウンロード -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <style type="text/css">
       a{
         font-size: 50px;
@@ -17,24 +13,12 @@
       }
     </style>
     <script>
-      //readyメソッド：HTML documentの構築が終わったときに呼び出す関数の指定
       jQuery(document).ready(init);
-
-      //readyメソッドで呼び出される関数の定義
       function init(){
-        //jQuery("#myList a")までは、セレクタ＝IDがmyListの内部にあるA要素を選択
-        //hoverメソッドは、カーソルが上に入ったとき、第１引数の関数を呼び出し、
-        //カーソルが外れた時に、第２引数の関数を呼び出す。
         jQuery("#myList a").hover(rollon, rolloff);
         jQuery("#myList a").click(popup_confirm);
       }
-
-      //hoverメソッドで呼び出される関数の定義１
       function rollon() {
-
-        //jQuery(this)セレクタは、現在のDOMノードを呼び出す
-        //cssメソッドは、CSSを変更するメソッド。
-        //引数は一つで、JSON型式でCSSを指定する。
         jQuery(this).css(
           {
             "color": "red",
@@ -42,8 +26,6 @@
           }
         );
       }
-
-      //hoverメソッドで呼び出される関数の定義２
       function rolloff() {
         jQuery(this).css(
           {
@@ -52,12 +34,8 @@
           }
         );
       }
-
-      //jQuery("#myList a")がクリックされたときに呼び出される関数の定義
       function popup_confirm() {
         msg =  jQuery(this).attr("href");
-
-        //ポップアップウィンドウを出して、確認する
         var ans = confirm(msg + "に移動してもいいですか？");
         if (!ans) {
           return false;
@@ -65,7 +43,6 @@
       };
     </script>
   </head>
-
   <body bgcolor="#FFFFFF">
     <ul id="myList">
       <li><a href="http://www.google.co.jp">Google</a></li>
@@ -73,6 +50,5 @@
       <li><a href="http://www.facebook.com/">Facebook</a></li>
       <li><a href="http://www.twitter.com">twitter</a></li>
     </ul>
-
   </body>
 </html>

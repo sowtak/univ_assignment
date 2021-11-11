@@ -78,7 +78,8 @@
         //現在img要素がパラパラアニメーション再生状態にあるかを判定
         //もし再生中ならば, そのアニメーションを一時停止する
 		  	if(isAnimating) {
-            stopped = true;
+            stopped=true;
+            clearTimeout(timerId);
         }
         //手順2.ID=myImageを持つimg要素に対して直線移動アニメーション効果を適用
         //アニメーションの内容は, ダブルクリックを行った位置までimg要素(の中心部分)
@@ -86,7 +87,7 @@
             $("#myImage").animate({
                 left: event.pageX-$("#myImage").width()/2,
                 top: event.pageY-$("#myImage").height()/2,
-            }, "slow", "swing", flipAnimate());
+            }, "slow", "swing", flipAnimate);
         //animateメソッドを用いたアニメーション効果の書式は以下の通り
         //[ID=myImageを持つimg要素].animate(params, [duration], [easing], [callback])
         //[]で書かれた引数は省略できる
@@ -110,9 +111,10 @@
       //パラパラマンガのアニメーションを行う関数
       function flipAnimate() {
         if(stopped) {
-          return;
+          stopped=false;
         }
-        isAnimating = true;
+        if(!isAnimating)return;
+
         //表示したい番号の画像をimg要素に設定
         $("#myImage").attr("src", "images/img" + currentImg + ".png");
 

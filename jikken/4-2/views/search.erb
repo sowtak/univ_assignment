@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="iframe.js?var=1.0"></script>
+    <title>result</title>
+  </head>
+  <body>
+    <h1>蔵書図書館一覧</h1>
+    <ul>
+      <% @library_names.zip(@longitudes, @latitudes) do |library_name, longitude, latitude| %>
+      <li>
+        <a href = "https://www.openstreetmap.org/export/embed.html?bbox=<%= longitude %>%2C<%= latitude %>%2C<%= longitude %>%2C<%= latitude %>&amp;layer=mapnik&amp;marker=<%= latitude %>%2C<%= longitude %>"
+           target = "map"><%= library_name %></a>
+      </li>
+      <% end %>
+    </ul>
+  </body>
+</html>

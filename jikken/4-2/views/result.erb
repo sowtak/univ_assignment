@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="iframe.js?var=1.0"></script>
+    <title>result</title>
+  </head>
+  <body>
+    <h1>検索結果一覧</h1>
+    <ul>
+      <% @titles.zip(@bookids) do |title, bookid| %>
+    <li>
+      <form name="form" method="post" action="search">
+        <input type="hidden" name="ID" value="<%= bookid %>">
+        <input type="submit" value="<%= title %>">
+      </form>
+    </li>
+    <% end %>
+    </ul>
+  </body>
+</html>

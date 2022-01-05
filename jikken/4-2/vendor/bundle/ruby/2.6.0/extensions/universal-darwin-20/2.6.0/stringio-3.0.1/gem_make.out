@@ -1,0 +1,17 @@
+current directory: /Users/shintaroechigo/Desktop/情報理工学実験/マッシュアップ/sinatra/vendor/bundle/ruby/2.6.0/gems/stringio-3.0.1/ext/stringio
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20211206-79177-vgqhld.rb extconf.rb
+checking for rb_io_extract_modeenc() in ruby/io.h... no
+creating Makefile
+
+current directory: /Users/shintaroechigo/Desktop/情報理工学実験/マッシュアップ/sinatra/vendor/bundle/ruby/2.6.0/gems/stringio-3.0.1/ext/stringio
+make "DESTDIR=" clean
+
+current directory: /Users/shintaroechigo/Desktop/情報理工学実験/マッシュアップ/sinatra/vendor/bundle/ruby/2.6.0/gems/stringio-3.0.1/ext/stringio
+make "DESTDIR="
+compiling stringio.c
+linking shared-object stringio.bundle
+ld: warning: directory not found for option '-L/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.6.Internal.sdk/usr/local/lib'
+
+current directory: /Users/shintaroechigo/Desktop/情報理工学実験/マッシュアップ/sinatra/vendor/bundle/ruby/2.6.0/gems/stringio-3.0.1/ext/stringio
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 stringio.bundle ./.gem.20211206-79177-1xtv8t9

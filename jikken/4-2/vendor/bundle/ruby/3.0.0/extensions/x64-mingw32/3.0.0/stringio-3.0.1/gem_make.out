@@ -1,0 +1,17 @@
+current directory: C:/Users/tkyng/OneDrive/kadai/experiment2/02190367/4-2/vendor/bundle/ruby/3.0.0/gems/stringio-3.0.1/ext/stringio
+C:/Ruby30-x64/bin/ruby.exe -I C:/Ruby30-x64/lib/ruby/site_ruby/3.0.0 -r ./siteconf20211211-7172-6yrxt7.rb extconf.rb
+checking for rb_io_extract_modeenc() in ruby/io.h... yes
+creating Makefile
+
+current directory: C:/Users/tkyng/OneDrive/kadai/experiment2/02190367/4-2/vendor/bundle/ruby/3.0.0/gems/stringio-3.0.1/ext/stringio
+make DESTDIR\= clean
+
+current directory: C:/Users/tkyng/OneDrive/kadai/experiment2/02190367/4-2/vendor/bundle/ruby/3.0.0/gems/stringio-3.0.1/ext/stringio
+make DESTDIR\=
+generating stringio-x64-mingw32.def
+compiling stringio.c
+linking shared-object stringio.so
+
+current directory: C:/Users/tkyng/OneDrive/kadai/experiment2/02190367/4-2/vendor/bundle/ruby/3.0.0/gems/stringio-3.0.1/ext/stringio
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 stringio.so ./.gem.20211211-7172-ek2y9v

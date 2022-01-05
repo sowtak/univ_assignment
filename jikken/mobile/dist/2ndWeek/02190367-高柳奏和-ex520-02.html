@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>ex521: スワイプで左右に遷移する(モバイルデバイス向け)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 2020年11月18日現在のjQuery Mobileの最新安定板は1.4.5 -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css" />
+
+    <!-- jQuery 最新版を導入 -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- 2020年11月18日現在のjQuery Mobileの最新安定板は1.4.5 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.js"></script>
+    <script>
+      // #page1swipe上で右から左にスワイプした時の動作（page2view()を呼び出す）
+      $(document).on('pagecreate', '#page1', function() {
+        $('#page1swipe').on('swipeleft', page2view);
+      });
+      // #page2swipe上で左から右にスワイプした時の動作（page1view()を呼び出す）
+      // #page2swipe上で右から左にスワイプした時の動作（page3view()を呼び出す）
+      $(document).on('pagecreate', '#page2', function() {
+         $('#page2swipe').on('swiperight', page1view);
+         $('#page2swipe').on('swipeleft', page3view);
+      });
+      // #page3swipe上で左から右にスワイプした時の動作（page2view()を呼び出す）
+      $(document).on('pagecreate', '#page3', function() {
+         $('#page3swipe').on('swiperight', page2view);
+      });
+      // ページ1(#page1)へ進む
+      function page1view() {
+        $.mobile.changePage('#page1');
+      }
+      // ページ2(#page2)へ進む
+      function page2view() {
+        $.mobile.changePage('#page2');
+      }
+      // ページ3(#page3)へ進む
+      function page3view() {
+        $.mobile.changePage('#page3');
+      }
+    </script>
+  </head>
+
+  <body>
+   <!-- ページ1 -->
+   <div data-role="page" id="page1" data-theme="a">
+    <div data-role="header">
+      <!-- ナビゲーションバー(左右ページへのリンク) -->
+      <div data-role="navbar" class="navbar">
+        <ul>
+          <li>
+            <a href="#page2" data-icon="arrow-r"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div data-role="content" id="page1swipe" style="min-height:500px;">
+      <p>ここはページ1です。</p>
+      <p>＞ボタンをクリックするとページ2に移動します。</p>
+    </div>
+  </div>
+
+  <!-- ページ2 -->
+  <div data-role="page" id="page2" data-theme="a">
+    <div data-role="header">
+      <!-- ナビゲーションバー(左右ページへのリンク) -->
+      <div data-role="navbar" class="navbar">
+        <ul>
+          <li>
+            <a href="#page1" data-icon="arrow-l"></a>
+          </li>
+          <li>
+            <a href="#page3" data-icon="arrow-r"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div data-role="content" id="page2swipe" style="min-height:500px;">
+      <p>ここはページ2です。</p>
+      <p>＞ボタンをクリックするとページ3に移動します。</p>
+      <p>＜ボタンをクリックするとページ1に移動します。</p>
+    </div>
+  </div>
+
+  <!-- ページ3 -->
+  <div data-role="page" id="page3" data-theme="a">
+    <div data-role="header">
+      <!-- ナビゲーションバー(左右ページへのリンク) -->
+      <div data-role="navbar" class="navbar">
+        <ul>
+          <li>
+            <a href="#page2" data-icon="arrow-l"></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div data-role="content" id="page3swipe" style="min-height:500px;">
+      <p>ここはページ3です。</p>
+      <p>＜ボタンをクリックするとページ2に移動します。</p>
+    </div>
+  </div>
+  </body>
+</html>

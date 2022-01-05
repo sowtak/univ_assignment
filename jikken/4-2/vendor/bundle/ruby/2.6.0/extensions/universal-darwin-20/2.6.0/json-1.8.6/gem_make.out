@@ -1,0 +1,13 @@
+current directory: /Users/shintaroechigo/Desktop/情報理工学実験/マッシュアップ/sinatra/vendor/bundle/ruby/2.6.0/gems/json-1.8.6/ext/json
+/System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/bin/ruby -I /System/Library/Frameworks/Ruby.framework/Versions/2.6/usr/lib/ruby/2.6.0 -r ./siteconf20211206-77323-z87pey.rb extconf.rb
+creating Makefile
+
+current directory: /Users/shintaroechigo/Desktop/情報理工学実験/マッシュアップ/sinatra/vendor/bundle/ruby/2.6.0/gems/json-1.8.6/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/shintaroechigo/Desktop/情報理工学実験/マッシュアップ/sinatra/vendor/bundle/ruby/2.6.0/gems/json-1.8.6/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/shintaroechigo/Desktop/情報理工学実験/マッシュアップ/sinatra/vendor/bundle/ruby/2.6.0/gems/json-1.8.6/ext/json
+make "DESTDIR=" install
